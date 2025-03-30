@@ -8,7 +8,7 @@ Este es un proyecto de tercer semestre para la asignatura de embebidos el cual t
 Un proyecto complejo, universitario hecho con arduino u otra placa de desarrollo el cual sea un sistema embebido y funcione correctamente según lo planeado.
 ## Objetivos del proyecto
 ### Objetivo Especifico:
-Crear un videojuego (applicación) de conducción que se pueda controlar con unos controles físicos externos conectados al computador mediante una conección usb controlados con una placa de desarrollo arduino:
+Crear un videojuego (en la web) de conducción que se pueda controlar con unos controles físicos externos conectados al computador mediante una conección usb controlados con una placa de desarrollo arduino:
 1. Volante.
 2. Pedales: Acelerar, embrague y frenar.
 3. Caja de cambios 5 cambios y reversa.

@@ -1,10 +1,9 @@
 # nodos de npm - nodejs
-juego/node_modules
-package-lock
+juego/node_modules/
+juego/package-lock.json
 
 #configuraciones
 .vscode/
-juego/
 
 #este archivo
 .gitignore
