@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title>My first Three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
+    <script>
+            let key_configuration = {
+             'w':'y+'
+            ,'s':'y-'
+            ,'a':'x-'
+            ,'d':'x+'
+            ,'ArrowUp':'y+'
+            ,'ArrowDown':'y-'
+            ,'ArrowLeft':'x-'
+            ,'ArrowRight':'x+'
+            }
+        var move_sencibility = 1;
+        var scene = new THREE.Scene();
+         scene.background = new THREE.Color( 0x666666 ); // ADDED
+        var camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        //var renderer = new THREE.WebGLRenderer();
+        var renderer = new THREE.WebGLRenderer({ alpha: true }); // ADDED
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true; // ADDED
+        document.body.appendChild(renderer.domElement);
+
+        // Ligths
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 10, 5); // 🔥 Posición más elevada
+        light.castShadow = true;
+
+        // Configurar sombra para mayor calidad
+        light.shadow.mapSize.width = 2048; // Aumentar resolución
+        light.shadow.mapSize.height = 2048;
+        light.shadow.camera.near = 0.5; 
+        light.shadow.camera.far = 50;  
+        light.shadow.camera.left = -10;
+        light.shadow.camera.right = 10;
+        light.shadow.camera.top = 10;
+        light.shadow.camera.bottom = -10;
+        scene.add(light);
+
+
+
+        // Cube
+        var geometry = new THREE.BoxGeometry(1, 1, 1);
+        var material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+        var cube = new THREE.Mesh(geometry, material);
+        cube.castShadow = true; // ADDED
+        cube.position.y = 0; // ADDED
+        cube.position.z = 2; // ADDED
+        cube.rotation.x = 0.2;
+        scene.add(cube);
+
+        // Grid
+        /*  var grid = new THREE.GridHelper(100, 10); // ADDED
+          scene.add(grid); // ADDED*/
+
+        // Plane
+        const planeGeometry = new THREE.PlaneGeometry(20, 20, 32, 32); // ADDED
+        const planeMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 }) // ADDED
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial); // ADDED
+        plane.receiveShadow = true; // ADDED 
+        plane.position.set(0, 0, 0);  // ADDED
+        plane.rotation.x = 50;
+        scene.add(plane); // ADDED
+
+
+        camera.position.z = 10;
+
+        function render() {
+            cube.rotation.x += 0.03;
+            cube.rotation.y += 0.03;
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+        }
+        render();
+
+        window.addEventListener("resize", () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix(); // ⚡ IMPORTANTE: Actualizar la matriz de proyección
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+
+        window.addEventListener("keydown", function (ev) {
+            let key_press = ev.key;
+
+            console.log(key_press)
+            // Verificar si la tecla está configurada
+            if (!key_configuration[key_press]) return;
+
+            let axis = key_configuration[key_press].slice(0, 1);  // "x" o "y"
+            let direction = key_configuration[key_press].slice(-1) === '-' ? -1 : 1; 
+
+            cube.position[axis] += direction * move_sencibility; 
+            
+            let limitX = window.innerWidth / 2;
+            let limitY = window.innerHeight / 2;
+
+            if (Math.abs(cube.position.x) >= limitX * 0.8 || Math.abs(cube.position.y) >= limitY * 0.8) {
+                camera.position.z += 0.05; // Se aleja poco a poco
+                camera.updateProjectionMatrix();
+            }
+
+            renderer.render(scene, camera);
+        });
+
+    </script>
+</body>
