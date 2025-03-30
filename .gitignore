@@ -1,5 +1,10 @@
+# nodos de npm - nodejs
+juego/node_modules
+package-lock
+
 #configuraciones
 .vscode/
+juego/
 
 #este archivo
 .gitignore
