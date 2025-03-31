@@ -10,8 +10,8 @@ Crear un simulador web donde se puedan implementar los controles creados con HTM
 
 ### Objetivo Especificos para la entrega
 1. [ ] Crear los Diseños en blender (lo basicos por el momento)
-   - [x] Crear un carro
-   - [ ] Crear una moto
+   - [x] Crear un carro ✅
+   - [x] Crear una moto ✌
    - [ ] Crear un mapa pequeño
 2. [ ] Crear el simulador en three js (base)
    - [ ] Crear la pantalla
