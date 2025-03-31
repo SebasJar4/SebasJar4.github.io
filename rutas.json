@@ -5,8 +5,7 @@
         ,"models_3d":"/core/models_3d"
         ,"simulador_js":"core/simulador_js"
     ,"index_html": "/index.html"
-    ,"main_js": "core/simulador_js/main.js"
+    ,"controlador_escenas_js": "core/simulador_js/scenes/controlador_escenas.js"
     ,"normalice_css": "core/funcionalidades/normalice/normalice.css"
-    ,"Camera_js":"core/simulador_js/Camera.js"
-    ,"añadir": ["normalice_css","main_js"]
+    ,"añadir": ["normalice_css","controlador_escenas_js"]
 }
