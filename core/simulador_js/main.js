@@ -1,11 +1,13 @@
 import * as THREE from "three"
+
+
 var   scene     // Espacio donde van a estar todos los obj 
     , camera    // Camará que "enfocará" y mostrara los obj (esta no renderiza en la app)
     , renderer  // Obj que renderizara el escenario y la camara en la app (canvas tecnicamente) html
     , geometry  // Obj que almacena los vertices
     , material  // Obj que almacena el marerial del obj 
     , cube      // Obj que utiliza la geometry y el material obj para su creacion (los une)
-    ; 
+    ;
 
 scene = new THREE.Scene();              // Creación del obj
 camera = new THREE.PerspectiveCamera(   // Creación de la camara

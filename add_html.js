@@ -1,6 +1,4 @@
 import rutas_data_json from "./rutas.json" assert { type: "json" };
-import * as THREE from "three";
-
 // Función para añadir un archivo CSS al documento
 function add_css(ruta) {
     let link = document.createElement("link");

@@ -7,5 +7,6 @@
     ,"index_html": "/index.html"
     ,"main_js": "core/simulador_js/main.js"
     ,"normalice_css": "core/funcionalidades/normalice/normalice.css"
+    ,"Camera_js":"core/simulador_js/Camera.js"
     ,"añadir": ["normalice_css","main_js"]
 }
