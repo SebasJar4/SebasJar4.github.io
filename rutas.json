@@ -1,0 +1,11 @@
+{
+   "base":"/"
+    ,"core": "/core"
+        ,"funcionalidades":"core/funcionalidades/normalice"
+        ,"models_3d":"/core/models_3d"
+        ,"simulador_js":"core/simulador_js"
+    ,"index_html": "/index.html"
+    ,"main_js": "core/simulador_js/main.js"
+    ,"normalice_css": "core/funcionalidades/normalice/normalice.css"
+    ,"añadir": ["normalice_css","main_js"]
+}
