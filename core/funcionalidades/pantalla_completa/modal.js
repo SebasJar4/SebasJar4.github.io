@@ -31,22 +31,32 @@
             this.modalContent.style.padding = "20px";
             this.modalContent.style.borderRadius = "10px";
             this.modalContent.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.3)";
-
-
-            // Botón de cerrar (solo en modo INTERACTIVE)
-            if (this.mode === Modal.MODES.INTERACTIVE) {
-                const closeButton = document.createElement("button");
-                closeButton.innerText = "Cerrar";
-                closeButton.style.marginTop = "10px";
-                closeButton.addEventListener("click", () => this.close());
-                this.modalContent.appendChild(closeButton);
-            }
-
+            this.modalContent.style.display = "grid";
+            this.modalContent.style.gridAutoColumns = "auto";
+            this.modalContent.style.gridAutoRows = "auto";
+            this.modalContent.style.background = "#000";
+            this.modalContent.style.border = "2px solid #080"
+            this.modalContent.style.color = "#fff"
         }
 
         open() {
             this.pantallaNegra.style.display = "flex";
             this.isOpen = true;
+        }
+
+        without_blackScreen () {
+            this.pantallaNegra.style.background = "#0000";
+        }
+
+        async wait_respose () {
+            if (!document.getElementById("modal_close_button"))
+                this.addButton();
+            return new Promise( resolve  => {
+                document.getElementById("modal_close_button").addEventListener( "click" , e => {
+                    this.close();
+                    resolve(1);
+                });
+            })
         }
 
         close() {
@@ -55,6 +65,21 @@
             this.isOpen = false;
             document.getElementById( this.pantallaNegra.id )?.remove();
             
+        }
+
+        addButton () {
+            // Botón de cerrar (solo en modo INTERACTIVE)
+            if (this.mode === Modal.MODES.INTERACTIVE) {
+                const closeButton = document.createElement("button");
+                closeButton.id = "modal_close_button";
+                closeButton.innerText = "Cerrar";
+                closeButton.style.marginTop = "10px";
+                closeButton.style.background = "#080"
+                closeButton.style.color = "#000";
+                closeButton.style.fontSize = "3vw";
+                closeButton.addEventListener("click", () => this.close());
+                this.modalContent.appendChild(closeButton);
+            }
         }
 
         añadir() {
