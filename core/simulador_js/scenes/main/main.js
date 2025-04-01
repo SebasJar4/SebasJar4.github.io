@@ -104,4 +104,8 @@ async function showModal() {
     info_modal.close(); // Cerrar modal antes de continuar
 }
 
-export { init_screen, getSelectedOption , showModal};
+function close_first_scene() {
+  renderer.clear();
+}
+
+export { init_screen, getSelectedOption , showModal , close_first_scene};
